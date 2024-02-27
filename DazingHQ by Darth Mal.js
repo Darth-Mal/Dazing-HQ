@@ -451,7 +451,7 @@ nextbtn.onclick = () => {
 
     nextbtnClicks++
 
-    if (nextbtnClicks === 1){
+    if (nextbtnClicks === questions.length){
         console.log('done')
         bigAnswerBox.style.display = 'none'
         queNumberRectangle.style.display = 'none'
