@@ -28,6 +28,10 @@ score = 0
 numbersDone = []
 nextbtnClicks = 0
 
+resultPage = document.querySelector('.resultPage')
+resultPage__circleInner = document.querySelector('.resultPage__circle--inner')
+resultPage__circle = document.querySelector('.resultPage__circle')
+
 
 
 //SPICES
@@ -280,6 +284,9 @@ questions = [
 
 randomQuestion = Math.floor(Math.random() * questions.length)
 
+
+
+
 //Function to display questions and answers
 displayQuestion = (questionText, answersTextA, answersTextB, answersTextC, answersTextD, answersTextE) => {
  
@@ -292,6 +299,20 @@ displayQuestion = (questionText, answersTextA, answersTextB, answersTextC, answe
 
    
 }
+
+
+
+scoreReveal = () => {
+    scorePercentage = Math.floor(score / questions.length *100)
+    resultPage__circleInner.innerHTML = `<h1>${score}/${questions.length}</h1>`
+    resultPage__circle.style.background = `conic-gradient( #7509c3 ${scorePercentage}%, transparent ${scorePercentage}% 100%)`;
+    resultPage__circleInner.stlye.display = 'flex'
+    resultPage__circleInner.stlye.alignItems = 'center'
+    resultPage__circleInner.stlye.justifyContent = 'center'
+
+   
+}
+
 
 
 startBtn.onclick = () => {
@@ -313,6 +334,50 @@ startBtn.onclick = () => {
     
     queNumberRectangle.innerText = `Question ${questionNumber++} of ${questions.length}`
     
+    smallAnswerBoxes.forEach((box) => {
+        box.style.backgroundColor = '';
+        box.style.color = '';
+       // Reset text color as well
+    });
+    
+    let answerSelected = false
+ 
+    smallAnswerBoxes.forEach((smallbox, index) => {       
+        smallbox.onclick = () => {
+            if (!answerSelected){
+                smallAnswerBoxes.forEach((box) => {
+                    box.style.backgroundColor = '444';
+                    box.style.color = '';
+                   // Reset text color as well
+                });
+
+                answerSelected = true            
+
+            //   smallbox.style.backgroundColor = ''
+
+          
+            // console.log(questions[randomQuestion].answers[index].correct)
+           if (questions[randomQuestion].answers[index].correct === true){
+            console.log('yayy')
+            smallbox.style.backgroundColor = '#00cc66'
+            score+=1
+            console.log(score)
+           } else if (questions[randomQuestion].answers[index].correct !== true){
+            console.log('nahh')
+            smallbox.style.backgroundColor = '#ff3333'
+
+            smallAnswerBoxes.forEach((correctBox, index) => {
+                if ( questions[randomQuestion].answers[index].correct === true){
+                    correctBox.style.backgroundColor = '#00cc66' 
+                    correctBox.style.color = 'white' 
+                }           
+
+                })
+            }
+        }
+
+    }   
+})
 }
 
 //Calling displayQuestion on click of nextbtn
@@ -391,7 +456,8 @@ nextbtn.onclick = () => {
         bigAnswerBox.style.display = 'none'
         queNumberRectangle.style.display = 'none'
         nextbtn.style.display = 'none'
-        questionh3.innerHTML = `${score}/${questions.length}`
+        resultPage.style.display = 'block'
+        scoreReveal()       
         reloadBtn.style.display = 'flex'
         reloadBtn.onclick = () => {
             location.reload()
@@ -401,6 +467,7 @@ nextbtn.onclick = () => {
     }
     
 } 
+
 
 
 
