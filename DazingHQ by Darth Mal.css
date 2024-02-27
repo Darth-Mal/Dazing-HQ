@@ -101,11 +101,17 @@ body{
     transition: 0.2s ease-in-out;
     background-color: white;
     color: #7509c3;
-    z-index: 99;
-    display: none;
+    z-index: 150;
+    /* display: none; */
     right: 50%;
     left: 30%;
 
+}
+
+.reloadBtn:active{
+    color: white;
+    background-color: #7509c3;
+    transform: translateY(3px);
 }
 
 .startBtn{
