@@ -306,9 +306,9 @@ scoreReveal = () => {
     scorePercentage = Math.floor(score / questions.length *100)
     resultPage__circleInner.innerHTML = `<h1>${score}/${questions.length}</h1>`
     resultPage__circle.style.background = `conic-gradient( #7509c3 ${scorePercentage}%, transparent ${scorePercentage}% 100%)`;
-    resultPage__circleInner.stlye.display = 'flex'
-    resultPage__circleInner.stlye.alignItems = 'center'
-    resultPage__circleInner.stlye.justifyContent = 'center'
+    resultPage__circleInner.style.display = 'flex'
+    resultPage__circleInner.style.alignItems = 'center'
+    resultPage__circleInner.style.justifyContent = 'center'
 
    
 }
@@ -451,7 +451,7 @@ nextbtn.onclick = () => {
 
     nextbtnClicks++
 
-    if (nextbtnClicks === questions.length){
+    if (nextbtnClicks === 1){
         console.log('done')
         bigAnswerBox.style.display = 'none'
         queNumberRectangle.style.display = 'none'
@@ -462,7 +462,7 @@ nextbtn.onclick = () => {
         reloadBtn.onclick = () => {
             location.reload()
         }
-        reloadBtn.style.transform = 'translateY(10px)'
+        reloadBtn.style.transform = 'translateY(20px)'
         
     }
     
