@@ -198,6 +198,8 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 .question{
@@ -211,8 +213,6 @@ header{
     word-wrap: break-word;
     font-size: 20px;
     /* line-height: 10px; */
-    height: 400px;
-    overflow-y: scroll;
     font-weight: 600;
     
 }
